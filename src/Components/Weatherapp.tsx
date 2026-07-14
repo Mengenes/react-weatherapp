@@ -55,23 +55,25 @@ function Weatherapp() {
 
 
   useEffect(() => {
+
+
     if (!location.trim()) return;
 
     const timer = setTimeout(() => {
       search(location);
-    }, 100); // Wait 100ms after user stops typing
+    }, 500); // Wait 100ms after user stops typing
 
     return () => clearTimeout(timer);
   }, [location]);
 
   return (
     <div className="flex min-h-screen justify-center items-center dark:bg-gray-900 bg-gray-100 p-4">
-      <div className="flex flex-col bg-gradient-to-t from-sky-500 to-indigo-500 max-w-md w-full rounded-2xl shadow-lg p-5">
+      <div className="flex flex-col bg-linear-to-t from-sky-500 to-indigo-500 max-w-md w-full rounded-2xl shadow-lg p-5">
         <div className="flex gap-2 mb-6">
           <input
             type="text"
             placeholder="Enter Location..."
-            className="flex-grow dark:bg-gray-800 text-center rounded-full h-12 shadow-lg bg-white border-0 dark:text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            className="grow dark:bg-gray-800 text-center rounded-full h-12 shadow-lg bg-white border-0 dark:text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
             value={location}
             onChange={handleChange}
           />
