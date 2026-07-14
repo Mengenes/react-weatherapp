@@ -8,6 +8,5 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
-    base: env.VITE_BASE_PATH || "/react-weatherapp",
   }
 })
