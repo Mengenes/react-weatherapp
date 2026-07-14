@@ -34,6 +34,12 @@ function Weatherapp() {
 
   async function search(city: string) {
     try {
+
+ const timer = setTimeout(() => {
+      console.log("Searching:", query);
+      
+    }, 100); 
+      
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_API_KEY}`;
       const response = await fetch(url);
       const data = await response.json();
@@ -49,10 +55,15 @@ function Weatherapp() {
     setLocation("");
   }
 
-  useEffect(() => {
-    // Automatically search for London on first load
-    search("London");
-  }, []);
+useEffect(() => {
+  if (!location.trim()) return;
+
+  const timer = setTimeout(() => {
+    search(location);
+  }, 100);
+
+  return () => clearTimeout(timer);
+}, [location]);
 
   return (
     <div className="flex min-h-screen justify-center items-center dark:bg-gray-900 bg-gray-100 p-4">
