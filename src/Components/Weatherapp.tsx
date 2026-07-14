@@ -57,11 +57,7 @@ function Weatherapp() {
 
 useEffect(() => {
   if (!location.trim()) return;
-
-  const timer = setTimeout(() => {
-    search(location);
-  }, 100);
-
+  
   return () => clearTimeout(timer);
 }, [location]);
 
